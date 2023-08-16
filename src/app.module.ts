@@ -17,13 +17,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: 'admin',
       database: 'test',
-      entities: ['.src/**/*.entity.{ts,js}'],
+      entities: [
+        __dirname + '/./**/*.entity{.ts,.js}',
+    ],
       synchronize: true,
     }),
     TodosModule,
    
   ],
-  controllers: [AppController, TodosController],
-  providers: [AppService, TodosService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
