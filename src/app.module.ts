@@ -6,12 +6,22 @@ import { AppService } from './app.service';
 import { TodosController } from './todos/todos.controller';
 import { TodosService } from './todos/todos.service';
 import { TodosModule } from './todos/todos.module';
-import { DatabaseModule } from './database/database.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: '127.0.0.1',
+      port: 5432,
+      username: 'postgres',
+      password: 'admin',
+      database: 'test',
+      entities: ['.src/**/*.entity.{ts,js}'],
+      synchronize: true,
+    }),
     TodosModule,
-    DatabaseModule,
+   
   ],
   controllers: [AppController, TodosController],
   providers: [AppService, TodosService],
