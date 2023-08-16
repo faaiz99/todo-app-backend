@@ -7,13 +7,11 @@ import { TodosController } from './todos/todos.controller';
 import { TodosService } from './todos/todos.service';
 import { TodosModule } from './todos/todos.module';
 import { DatabaseModule } from './database/database.module';
-import { TodoModule } from './database/entity/todo.module';
 
 @Module({
   imports: [
     TodosModule,
     DatabaseModule,
-    TodoModule
   ],
   controllers: [AppController, TodosController],
   providers: [AppService, TodosService],
