@@ -14,18 +14,17 @@ export class TodosService {
 
   createOne(createTodo: CreateTodo): Promise<Todo | null> {
     let todo: Todo = new Todo();
-    todo.description = createTodo.description
-    todo.completetionDate = createTodo.completionDate
-    todo.complete = createTodo.complete
-    console.log(todo);
+    todo.description = createTodo.IDescription
+    todo.completetionDate = createTodo.ICompletionDate
+    todo.complete = createTodo.IComplete
     return this.todoRepository.save(todo)
   }
 
   updateOne(id: number, updateTodo: CreateTodo): Promise<UpdateResult> {
     let todo: Todo = new Todo();
-    todo.complete = updateTodo.complete
-    todo.completetionDate = updateTodo.completionDate
-    todo.description = updateTodo.description
+    todo.complete = updateTodo.IComplete
+    todo.completetionDate = updateTodo.ICompletionDate
+    todo.description = updateTodo.IDescription
     return this.todoRepository.update(id, todo)
   }
 

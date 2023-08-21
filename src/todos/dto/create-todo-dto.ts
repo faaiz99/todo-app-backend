@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 export class CreateTodo {
-	description: string;
-	complete: boolean;
-	completionDate: Date;
+	IDescription: string;
+	IComplete: boolean;
+	ICompletionDate: Date;
 }

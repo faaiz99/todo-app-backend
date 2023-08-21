@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodosController } from './todos/todos.controller';
-import { TodosService } from './todos/todos.service';
 import { TodosModule } from './todos/todos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CorsMiddleware } from './middleware/cors.middleware';
 
 @Module({
   imports: [
@@ -19,13 +18,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'test',
       entities: [
         __dirname + '/./**/*.entity{.ts,.js}',
-    ],
+      ],
       synchronize: true,
     }),
     TodosModule,
-   
+
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(CorsMiddleware)
+      .forRoutes('/todos');
+  }
+}
