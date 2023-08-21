@@ -75,30 +75,29 @@ describe('TodosService', () => {
     });
   });
 
-  // describe('findOne()', () => {
-  //   it('should get a single user', () => { 
-  //     /**
-  //      * https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33173
-  //      */
+  describe('findOne()', () => {
+    it('should get a single user', () => { 
+      /**
+       * https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33173
+       */
     
-  //     const findSpy = jest.spyOn(entity, 'findOne');
-  //     expect(service.findOne(1));
-  //     expect(findSpy).toBeCalledWith({ where: { id: 1 } });
-  //   });
-  // });
+      const findSpy = jest.spyOn(entity, 'findOne'  as never);
+      expect(service.findOne(1));
+      expect(findSpy).toBeCalledWith({ where: { id: 1 } });
+    });
+  });
 
-  // describe('deleteOne()', () => {
-  //   it('should remove a user', async () => {
-  //      /**
-  //      * https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33173
-  //      */
-     
-  //     const findSpy = jest.spyOn(entity, 'findOne').mockReturnValue({
-  //       destroy: jest.fn(),
-  //     } as any);
-  //     const retVal = await service.deleteOne(2);
-  //     expect(findSpy).toBeCalledWith({ where: { id: 2 } });
-  //     expect(retVal).toBeUndefined();
-  //   });
-  // });
+  describe('deleteOne()', () => {
+    it('should remove a user', async () => {
+       /**
+       * https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33173
+       */
+      const findSpy = jest.spyOn(entity, 'findOne').mockReturnValue({
+        destroy: jest.fn(),
+      } as any);
+      const retVal = await service.deleteOne(2);
+      expect(findSpy).toBeCalledWith({ where: { id: 2 } });
+      expect(retVal).toBeUndefined();
+    });
+  });
 });

@@ -16,7 +16,8 @@ export class TodosService {
     let todo: Todo = new Todo();
     todo.description = createTodo.description
     todo.completetionDate = createTodo.completionDate
-    todo.complete = todo.complete
+    todo.complete = createTodo.complete
+    console.log(todo);
     return this.todoRepository.save(todo)
   }
 
