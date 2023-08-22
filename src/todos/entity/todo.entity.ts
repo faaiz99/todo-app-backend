@@ -4,14 +4,14 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class Todo {
   @PrimaryGeneratedColumn()
-  id: number;
+  ITodoID: number;
 
   @Column({ length: 500 })
-  description: string;
+  IDescription: string;
 
   @Column('date')
-  completetionDate: Date;
+  ICompletionDate: Date;
 
   @Column('boolean')
-  complete: boolean;
+  IComplete: boolean;
 }

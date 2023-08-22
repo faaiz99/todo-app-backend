@@ -4,9 +4,9 @@ import { TodosService } from './todos.service';
 import { CreateTodo } from './dto/create-todo-dto';
 
 const createTodo: CreateTodo = {
-  description: 'abc',
-  complete: false,
-  completionDate: new Date(),
+  IDescription: 'abc',
+  IComplete: false,
+  ICompletionDate: new Date(),
 };
 
 describe('TodosController', () => {

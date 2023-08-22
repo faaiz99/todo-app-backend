@@ -14,17 +14,23 @@ export class TodosService {
 
   createOne(createTodo: CreateTodo): Promise<Todo | null> {
     let todo: Todo = new Todo();
-    todo.description = createTodo.IDescription
-    todo.completetionDate = createTodo.ICompletionDate
-    todo.complete = createTodo.IComplete
+    todo.IDescription = createTodo.IDescription
+    todo.ICompletionDate = createTodo.ICompletionDate
+    todo.IComplete = createTodo.IComplete
     return this.todoRepository.save(todo)
   }
 
+  completeOne(id:number, updateTodo:CreateTodo): Promise <UpdateResult>{
+    console.log(updateTodo);
+    let todo: Todo = new Todo();
+    todo.IComplete = updateTodo.IComplete
+    return this.todoRepository.update(id, todo)
+  }
   updateOne(id: number, updateTodo: CreateTodo): Promise<UpdateResult> {
     let todo: Todo = new Todo();
-    todo.complete = updateTodo.IComplete
-    todo.completetionDate = updateTodo.ICompletionDate
-    todo.description = updateTodo.IDescription
+    todo.IComplete = updateTodo.IComplete
+    todo.ICompletionDate = updateTodo.ICompletionDate
+    todo.IDescription = updateTodo.IDescription
     return this.todoRepository.update(id, todo)
   }
 
@@ -36,6 +42,6 @@ export class TodosService {
     return this.todoRepository.findBy({})
   }
   findOne(id: number): Promise<Todo | null> {
-    return this.todoRepository.findOneBy({ id: id })
+    return this.todoRepository.findOneBy({ ITodoID: id })
   }
 }

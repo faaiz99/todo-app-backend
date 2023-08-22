@@ -14,13 +14,17 @@ export class TodosController {
 
   @Post()
   create(@Body() createTodo: CreateTodo) {
-    console.log('create todo',createTodo);
     return this.todosService.createOne(createTodo);
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.todosService.findOne(id);
+  }
+
+  @Patch(':id')
+  completeOne(@Param('id')id:number, @Body() updateTodo: CreateTodo){
+    return this.todosService.completeOne(id, updateTodo)
   }
 
   @Patch(':id')
